@@ -1,0 +1,201 @@
+\documentclass[a4paper,11pt,titlepage]{jarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{fancybox,ascmac}
+\usepackage{url}
+
+\title{知能情報実験II(第13回):ロジスティックモデル}
+\author{175751C 宮城孝明}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\clearpage
+
+\section{リターンマップのr依存性}
+\subsection{プログラムのソースコード(python)}
+\lstinputlisting[language=python, numbers=left, breaklines=true, basicstyle=\ttfamily\footnotesize,
+  frame=single, caption=python\_code, label=sample]{return_map.py}
+\subsection{プログラムのソースコード(C)}
+\lstinputlisting[language=C, numbers=left, breaklines=true, basicstyle=\ttfamily\footnotesize,
+  frame=single, caption=C言語\_code, label=sample]{return_map.c}
+\subsection{結果と考察}
+
+\begin{figure}[htpb]
+  \centering
+    \begin{tabular}{c}
+
+    \begin{minipage}{0.47\hsize}
+        \centering
+          \includegraphics[keepaspectratio, scale=0.35, angle=0]
+                          {r_150.png}
+                          \caption{r = 1.50 のグラフ．}
+                          \label{fig:sin1_x}
+      \end{minipage}
+
+      \begin{minipage}{0.06\hsize}
+        \hspace{5mm}
+      \end{minipage}
+
+      \begin{minipage}{0.47\hsize}
+        \centering
+          \includegraphics[keepaspectratio, scale=0.35, angle=0]
+                          {r_260.png}
+                          \caption{r = 2.60 のグラフ．}
+                          \label{fig:sin2_x}
+      \end{minipage}
+
+      \begin{minipage}{0.06\hsize}
+        \vspace{50mm}
+      \end{minipage} \\
+
+      \begin{minipage}{0.47\hsize}
+        \centering
+          \includegraphics[keepaspectratio, scale=0.35, angle=0]
+                          {r_320.png}
+                          \caption{r = 3.20 のグラフ．}
+                          \label{fig:sin3_x}
+      \end{minipage}
+
+      \begin{minipage}{0.06\hsize}
+        \hspace{5mm}
+      \end{minipage}
+
+      \begin{minipage}{0.47\hsize}
+        \centering
+          \includegraphics[keepaspectratio, scale=0.35, angle=0]
+                          {r_350.png}
+                          \caption{r = 3.50 のグラフ．}
+                          \label{fig:sin4_x}
+      \end{minipage}
+
+    \begin{minipage}{0.06\hsize}
+        \vspace{50mm}
+      \end{minipage} \\
+
+	  \begin{minipage}{0.47\hsize}
+        \centering
+          \includegraphics[keepaspectratio, scale=0.35, angle=0]
+                          {r_386.png}
+                          \caption{r = 3.86 のグラフ．}
+                          \label{fig:sin5_x}
+      \end{minipage}
+
+	\begin{minipage}{0.06\hsize}
+        \hspace{5mm}
+      \end{minipage}
+
+      \begin{minipage}{0.47\hsize}
+        \centering
+          \includegraphics[keepaspectratio, scale=0.35, angle=0]
+                          {r_390.png}
+                          \caption{r = 3.90 のグラフ．}
+                          \label{fig:sin6_x}
+      \end{minipage}
+
+
+
+    \end{tabular}
+\end{figure}
+
+今回求めたリターンマップモデル図は,ある空間内に存在する生物の個体数変動の特徴を現している.\par
+図1では,青の直線が個体数の変動を示している.それからわかる事としては,子世代の個体数には変動が見られず,親世代は約0.3から
+約0.7の間に動いている.つまり,最大増加率が1.5以下であれば大きな変動が見られないと思われる.\par
+次に,図5と6を見てみる.図4の値と比べて,最大増加率が3.8を超えていると変動する幅も大きいとわかる.しかし,青線は決まった空間内を越えることが
+ないため,最大増加率が4以上なっても変わらないことが考えられる.
+
+\section{初期値鋭敏性}
+\subsection{プログラムのソースコード(python)}
+\lstinputlisting[language=python, numbers=left, breaklines=true, basicstyle=\ttfamily\footnotesize,
+  frame=single, caption=python\_code, label=sample]{sensitivity.py}
+\subsection{プログラムのソースコード(C)}
+\lstinputlisting[language=C, numbers=left, breaklines=true, basicstyle=\ttfamily\footnotesize,
+  frame=single, caption=C言語\_code, label=sample]{sensitivity.c}
+\subsection{結果と考察}
+\begin{figure}[htpb]
+  \centering
+    \begin{tabular}{c}
+
+    \begin{minipage}{0.47\hsize}
+        \centering
+          \includegraphics[keepaspectratio, scale=0.35, angle=0]
+                          {s_150.png}
+                          \caption{r = 1.50 のグラフ．}
+                          \label{fig:sin1_x}
+      \end{minipage}
+
+      \begin{minipage}{0.06\hsize}
+        \hspace{5mm}
+      \end{minipage}
+
+      \begin{minipage}{0.47\hsize}
+        \centering
+          \includegraphics[keepaspectratio, scale=0.35, angle=0]
+                          {s_260.png}
+                          \caption{r = 2.60 のグラフ．}
+                          \label{fig:sin2_x}
+      \end{minipage}
+
+      \begin{minipage}{0.06\hsize}
+        \vspace{50mm}
+      \end{minipage} \\
+
+      \begin{minipage}{0.47\hsize}
+        \centering
+          \includegraphics[keepaspectratio, scale=0.35, angle=0]
+                          {s_320.png}
+                          \caption{r = 3.20 のグラフ．}
+                          \label{fig:sin3_x}
+      \end{minipage}
+
+      \begin{minipage}{0.06\hsize}
+        \hspace{5mm}
+      \end{minipage}
+
+      \begin{minipage}{0.47\hsize}
+        \centering
+          \includegraphics[keepaspectratio, scale=0.35, angle=0]
+                          {s_350.png}
+                          \caption{r = 3.50 のグラフ．}
+                          \label{fig:sin4_x}
+      \end{minipage}
+
+    \begin{minipage}{0.06\hsize}
+        \vspace{50mm}
+      \end{minipage} \\
+
+	  \begin{minipage}{0.47\hsize}
+        \centering
+          \includegraphics[keepaspectratio, scale=0.35, angle=0]
+                          {s_386.png}
+                          \caption{r = 3.86 のグラフ．}
+                          \label{fig:sin5_x}
+      \end{minipage}
+
+	\begin{minipage}{0.06\hsize}
+        \hspace{5mm}
+      \end{minipage}
+
+      \begin{minipage}{0.47\hsize}
+        \centering
+          \includegraphics[keepaspectratio, scale=0.35, angle=0]
+                          {s_390.png}
+                          \caption{r = 3.90 のグラフ．}
+                          \label{fig:sin6_x}
+      \end{minipage}
+
+
+
+    \end{tabular}
+\end{figure}
+
+初期値を0.001と細かくくぎりにしていき,初期値鋭敏性の性質を視覚的にわかりやすくするために,
+グラフを作成し求めた.そのグラフからある値に収束する図があれば,どの値にも収束せず色々な値に分散し
+てしまう図がある.\par
+図1から4までは,1本か2本,4本にしか値の変動が見られないが,最大増加率が3.80以上になると初期値の値によって,
+値が大きく変わっている.つまり,最大増加率が3.8以上になるとある空間内でも生物の増加や減少が激しくなると予測できる.
+
+
+\end{document}
